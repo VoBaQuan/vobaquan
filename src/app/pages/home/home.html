@@ -1,0 +1,140 @@
+<!-- Design System Preview Page -->
+<div class="home-wrap">
+
+  <!-- ── Falling Leaves Background ── -->
+  <div class="leaves-bg" aria-hidden="true">
+    <span class="leaf leaf-1">🍂</span>
+    <span class="leaf leaf-2">🍁</span>
+    <span class="leaf leaf-3">🍂</span>
+    <span class="leaf leaf-4">🍁</span>
+    <span class="leaf leaf-5">🍂</span>
+    <span class="leaf leaf-6">🍁</span>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section class="section hero">
+    <p class="label animate-fade-up">Frontend Developer · Portfolio</p>
+    <h1 class="hero-title animate-fade-up" style="animation-delay: 100ms">
+      Crafted with <em>patience</em>,<br>built with code.
+    </h1>
+    <p class="hero-sub animate-fade-up" style="animation-delay: 200ms">
+      A collection of work aged like good autumn wine —
+      <span class="accent-text">slow, intentional, beautiful.</span>
+    </p>
+    <div class="hero-actions animate-fade-up" style="animation-delay: 300ms">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+
+    <div class="wax-seal animate-stamp" style="animation-delay: 500ms">
+      <span>VBQ<br>2025</span>
+    </div>
+  </section>
+
+  <!-- ── Torn Paper Divider ── -->
+  <div class="torn-edge">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" fill="#3D2314">
+      <path d="M0,20 C50,5 100,35 150,18 C200,2 250,30 300,15 C350,0 400,28 450,12
+               C500,0 550,32 600,16 C650,2 700,26 750,14 C800,2 850,30 900,18
+               C950,6 1000,28 1050,14 C1100,2 1150,24 1200,10 L1200,40 L0,40 Z"/>
+    </svg>
+  </div>
+
+  <!-- ── Design Tokens Showcase ── -->
+  <section class="section" style="background: var(--color-bg-secondary)">
+
+    <div #reveal class="reveal">
+      <p class="label">Design System</p>
+      <h2>Colour Palette</h2>
+    </div>
+
+    <div class="color-grid">
+      <div #reveal class="reveal color-swatch" style="--swatch: #2C1A0E">
+        <span>BG Primary</span><code>#2C1A0E</code>
+      </div>
+      <div #reveal class="reveal color-swatch" style="--swatch: #4A2F1A; transition-delay: 80ms">
+        <span>Surface</span><code>#4A2F1A</code>
+      </div>
+      <div #reveal class="reveal color-swatch" style="--swatch: #F5E6C8; color: #2C1A0E; transition-delay: 160ms">
+        <span>Paper</span><code>#F5E6C8</code>
+      </div>
+      <div #reveal class="reveal color-swatch" style="--swatch: #D4721A; transition-delay: 240ms">
+        <span>Orange</span><code>#D4721A</code>
+      </div>
+      <div #reveal class="reveal color-swatch" style="--swatch: #C9A84C; transition-delay: 320ms">
+        <span>Gold</span><code>#C9A84C</code>
+      </div>
+      <div #reveal class="reveal color-swatch" style="--swatch: #8B3A2A; transition-delay: 400ms">
+        <span>Red Brick</span><code>#8B3A2A</code>
+      </div>
+    </div>
+
+    <!-- Ornamental divider -->
+    <div class="ornament">
+      <span class="accent-text">✦</span>
+    </div>
+
+    <!-- Typography specimens -->
+    <div #reveal class="reveal">
+      <p class="label">Typography</p>
+      <h2 style="font-style: italic; margin-bottom: .5rem">Playfair Display — Headings</h2>
+      <p style="font-family: var(--font-body); margin-bottom: .5rem">
+        Lora — Body text, readable at length, warm and inviting.
+      </p>
+      <p class="accent-text" style="font-size: 1.2rem; margin-bottom: .5rem">
+        IM Fell English — Accent &amp; decorative italic passages.
+      </p>
+      <code>Courier Prime — Code &amp; monospaced labels</code>
+    </div>
+
+    <div class="ornament"><span class="accent-text">✦</span></div>
+
+    <!-- Buttons -->
+    <div #reveal class="reveal">
+      <p class="label">Buttons</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem">
+        <button class="btn btn-primary">Primary Action</button>
+        <button class="btn btn-outline">Outline Action</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Torn Paper Divider (flip) ── -->
+  <div class="torn-edge" style="transform: rotate(180deg)">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" fill="#3D2314">
+      <path d="M0,20 C50,5 100,35 150,18 C200,2 250,30 300,15 C350,0 400,28 450,12
+               C500,0 550,32 600,16 C650,2 700,26 750,14 C800,2 850,30 900,18
+               C950,6 1000,28 1050,14 C1100,2 1150,24 1200,10 L1200,40 L0,40 Z"/>
+    </svg>
+  </div>
+
+  <!-- ── Card Showcase ── -->
+  <section class="section">
+    <div #reveal class="reveal">
+      <p class="label">Components</p>
+      <h2>Project Cards</h2>
+    </div>
+
+    <div class="cards-grid">
+      <div #reveal class="reveal card card-postcard">
+        <p class="label" style="margin-bottom: .5rem">Angular · TypeScript</p>
+        <h3>Project One</h3>
+        <p style="margin-top: .5rem">A vintage-styled web app showcasing advanced Angular patterns and scroll-driven animations.</p>
+        <a href="#" class="btn btn-outline" style="margin-top: 1rem; font-size: 0.75rem">View Project</a>
+      </div>
+      <div #reveal class="reveal card card-postcard" style="transition-delay: 120ms">
+        <p class="label" style="margin-bottom: .5rem">CSS · Animation</p>
+        <h3>Project Two</h3>
+        <p style="margin-top: .5rem">Exploring the boundaries of pure CSS animation with keyframes and custom properties.</p>
+        <a href="#" class="btn btn-outline" style="margin-top: 1rem; font-size: 0.75rem">View Project</a>
+      </div>
+      <div #reveal class="reveal card card-postcard" style="transition-delay: 240ms">
+        <p class="label" style="margin-bottom: .5rem">RxJS · State</p>
+        <h3>Project Three</h3>
+        <p style="margin-top: .5rem">Reactive state management with RxJS streams and elegant data flow patterns.</p>
+        <a href="#" class="btn btn-outline" style="margin-top: 1rem; font-size: 0.75rem">View Project</a>
+      </div>
+    </div>
+  </section>
+
+</div>

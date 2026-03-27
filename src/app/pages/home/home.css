@@ -1,0 +1,122 @@
+/* ── Home Page ── */
+.home-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Falling Leaves ── */
+.leaves-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.leaf {
+  position: absolute;
+  top: -60px;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: leafFall var(--duration-leaf) ease-in infinite,
+             leafSway calc(var(--duration-leaf) / 3) ease-in-out infinite;
+  filter: sepia(0.4) brightness(0.85);
+}
+
+.leaf-1 { left: 8%;   animation-duration: 9s,  3s;  animation-delay: 0s,   0s;   --leaf-drift: 60px;  --leaf-rotate: 380deg; }
+.leaf-2 { left: 22%;  animation-duration: 12s, 4s;  animation-delay: 2s,   1s;   --leaf-drift: -80px; --leaf-rotate: -320deg; }
+.leaf-3 { left: 40%;  animation-duration: 8s,  2.5s; animation-delay: 4s,  0.5s; --leaf-drift: 100px; --leaf-rotate: 420deg; }
+.leaf-4 { left: 58%;  animation-duration: 11s, 3.5s; animation-delay: 1s,  2s;   --leaf-drift: -60px; --leaf-rotate: -360deg; }
+.leaf-5 { left: 75%;  animation-duration: 10s, 3s;  animation-delay: 3s,   1.5s; --leaf-drift: 70px;  --leaf-rotate: 300deg; }
+.leaf-6 { left: 90%;  animation-duration: 7s,  2s;  animation-delay: 5s,   0s;   --leaf-drift: -90px; --leaf-rotate: -400deg; }
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+}
+
+.hero-title {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-lg);
+  max-width: 16ch;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--color-accent-gold);
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  max-width: 50ch;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-secondary);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.hero .wax-seal {
+  position: absolute;
+  top: var(--space-xl);
+  right: var(--space-lg);
+  animation-delay: 600ms;
+}
+
+/* ── Color swatches ── */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.color-swatch {
+  background: var(--swatch);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  min-height: 80px;
+  transition: transform var(--duration-fast) var(--ease-vintage);
+}
+
+.color-swatch:hover {
+  transform: scale(1.04);
+}
+
+.color-swatch span {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ── Cards grid ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .hero .wax-seal {
+    display: none;
+  }
+}
