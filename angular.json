@@ -30,6 +30,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/vobaquan/",
               "budgets": [
                 {
                   "type": "initial",
