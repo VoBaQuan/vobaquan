@@ -183,8 +183,92 @@
   animation: stampPress 0.5s var(--ease-vintage) 0.8s both;
 }
 
-@media (max-width: 640px) {
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 0 clamp(1.5rem, 6vw, 4rem);
+    padding-top: 68px;
+  }
+
+  .hero-seal {
+    width: 64px;
+    height: 64px;
+    font-size: 0.55rem;
+  }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 1.5rem;
+    padding-top: 68px;
+    justify-content: center;
+    min-height: 100svh;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 1.25rem;
+  }
+
+  /* Role badge: ẩn diamond marks vì không đủ chỗ */
+  .hero-role::before,
+  .hero-role::after {
+    display: none;
+  }
+
+  .hero-role {
+    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.85rem;
+  }
+
+  .hero-tagline {
+    margin-top: 1.75rem;
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    margin-top: 1.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .hero-seal { display: none; }
+
+  .scroll-hint { display: none; }
+
+  /* Giảm số lá trên tablet/mobile để nhẹ hơn */
+  .leaf-3, .leaf-6, .leaf-9, .leaf-12 {
+    display: none;
+  }
+}
+
+/* ── Mobile nhỏ (≤ 480px) ── */
+@media (max-width: 480px) {
+  .hero {
+    padding: 0 1.25rem;
+    padding-top: 68px;
+  }
+
+  .hero-greeting {
+    font-size: 1rem;
+  }
+
+  .hero-tagline br { display: none; }
+
+  /* Ẩn thêm lá để performance trên mobile yếu */
+  .leaf-2, .leaf-5, .leaf-8, .leaf-11 {
+    display: none;
+  }
 }
 
 /* Scroll hint — bottom center */

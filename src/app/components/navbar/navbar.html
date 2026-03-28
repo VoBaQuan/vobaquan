@@ -1,12 +1,13 @@
-<nav class="navbar">
+<nav class="navbar" [class.menu-open]="menuOpen()">
+
   <!-- Logo -->
-  <a routerLink="/" class="navbar-logo">
+  <a routerLink="/" class="navbar-logo" (click)="closeMenu()">
     <span class="logo-monogram">VBQ</span>
     <span class="logo-divider">|</span>
     <span class="logo-name">Vo Ba Quan</span>
   </a>
 
-  <!-- Nav links -->
+  <!-- Desktop nav links -->
   <ul class="navbar-links">
     @for (link of links; track link.path) {
       <li>
@@ -21,4 +22,39 @@
       </li>
     }
   </ul>
+
+  <!-- Hamburger button (mobile only) -->
+  <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen()" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-overlay" [class.open]="menuOpen()" (click)="closeMenu()"></div>
+
+<!-- Mobile menu drawer -->
+<div class="mobile-menu" [class.open]="menuOpen()">
+  <ul class="mobile-links">
+    @for (link of links; track link.path) {
+      <li>
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="mobile-link"
+          (click)="closeMenu()"
+        >
+          <span class="mobile-link-num">0{{ $index + 1 }}</span>
+          {{ link.label }}
+        </a>
+      </li>
+    }
+  </ul>
+
+  <div class="mobile-menu-footer">
+    <span class="accent-text">VBQ · 2026</span>
+  </div>
+</div>
