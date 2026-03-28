@@ -1,9 +1,3 @@
-/* ── Home Page ── */
-.home-wrap {
-  position: relative;
-  overflow: hidden;
-}
-
 /* ── Falling Leaves ── */
 .leaves-bg {
   position: fixed;
@@ -16,107 +10,199 @@
 .leaf {
   position: absolute;
   top: -60px;
-  font-size: 1.5rem;
-  opacity: 0.7;
-  animation: leafFall var(--duration-leaf) ease-in infinite,
-             leafSway calc(var(--duration-leaf) / 3) ease-in-out infinite;
-  filter: sepia(0.4) brightness(0.85);
+  font-size: 1.6rem;
+  animation:
+    leafFall var(--duration-leaf) ease-in infinite,
+    leafSway calc(var(--duration-leaf) / 3) ease-in-out infinite;
+  filter: sepia(0.5) brightness(0.8);
 }
 
-.leaf-1 { left: 8%;   animation-duration: 9s,  3s;  animation-delay: 0s,   0s;   --leaf-drift: 60px;  --leaf-rotate: 380deg; }
-.leaf-2 { left: 22%;  animation-duration: 12s, 4s;  animation-delay: 2s,   1s;   --leaf-drift: -80px; --leaf-rotate: -320deg; }
-.leaf-3 { left: 40%;  animation-duration: 8s,  2.5s; animation-delay: 4s,  0.5s; --leaf-drift: 100px; --leaf-rotate: 420deg; }
-.leaf-4 { left: 58%;  animation-duration: 11s, 3.5s; animation-delay: 1s,  2s;   --leaf-drift: -60px; --leaf-rotate: -360deg; }
-.leaf-5 { left: 75%;  animation-duration: 10s, 3s;  animation-delay: 3s,   1.5s; --leaf-drift: 70px;  --leaf-rotate: 300deg; }
-.leaf-6 { left: 90%;  animation-duration: 7s,  2s;  animation-delay: 5s,   0s;   --leaf-drift: -90px; --leaf-rotate: -400deg; }
+.leaf-1  { left:  4%; font-size: 1.8rem; animation-duration:  9s, 3s;   animation-delay:  0s,    0s;   --leaf-drift:  60px; --leaf-rotate:  380deg; }
+.leaf-2  { left: 12%; font-size: 1.3rem; animation-duration: 12s, 4s;   animation-delay:  0.5s,  0.5s; --leaf-drift: -80px; --leaf-rotate: -320deg; }
+.leaf-3  { left: 20%; font-size: 2rem;   animation-duration:  8s, 2.5s; animation-delay:  1.2s,  0.3s; --leaf-drift: 100px; --leaf-rotate:  420deg; }
+.leaf-4  { left: 30%; font-size: 1.4rem; animation-duration: 13s, 4.5s; animation-delay:  0.3s,  0.8s; --leaf-drift: -50px; --leaf-rotate: -280deg; }
+.leaf-5  { left: 40%; font-size: 1.6rem; animation-duration: 10s, 3.5s; animation-delay:  1.8s,  0.2s; --leaf-drift:  80px; --leaf-rotate:  350deg; }
+.leaf-6  { left: 50%; font-size: 1.2rem; animation-duration:  7s, 2s;   animation-delay:  0.8s,  0.5s; --leaf-drift: -70px; --leaf-rotate: -400deg; }
+.leaf-7  { left: 58%; font-size: 1.9rem; animation-duration: 11s, 3s;   animation-delay:  0.1s,  0s;   --leaf-drift:  90px; --leaf-rotate:  300deg; }
+.leaf-8  { left: 66%; font-size: 1.3rem; animation-duration:  9s, 2.5s; animation-delay:  2s,    1s;   --leaf-drift: -60px; --leaf-rotate: -360deg; }
+.leaf-9  { left: 75%; font-size: 1.7rem; animation-duration: 14s, 4s;   animation-delay:  1.5s,  0.5s; --leaf-drift:  70px; --leaf-rotate:  450deg; }
+.leaf-10 { left: 82%; font-size: 1.1rem; animation-duration:  8s, 2s;   animation-delay:  0.6s,  0.3s; --leaf-drift: -90px; --leaf-rotate: -320deg; }
+.leaf-11 { left: 88%; font-size: 1.5rem; animation-duration: 10s, 3.5s; animation-delay:  1s,    0.7s; --leaf-drift:  55px; --leaf-rotate:  380deg; }
+.leaf-12 { left: 95%; font-size: 1.8rem; animation-duration: 12s, 4s;   animation-delay:  0.4s,  0s;   --leaf-drift: -75px; --leaf-rotate: -410deg; }
 
-/* ── Hero ── */
+/* ── Typing cursor ── */
+.cursor {
+  display: inline-block;
+  width: 3px;
+  margin-left: 2px;
+  color: var(--color-accent-gold);
+  font-weight: 100;
+  animation: blink 0.7s step-end infinite;
+  vertical-align: baseline;
+}
+
+.cursor--name {
+  /* Override gradient text-fill từ h1 cha */
+  -webkit-text-fill-color: var(--color-accent-orange);
+  color: var(--color-accent-orange);
+  font-size: 0.7em;
+  vertical-align: middle;
+}
+
+/* Dừng nhấp nháy khi đang gõ, chỉ blink khi done */
+.cursor--blink {
+  animation: blink 0.7s step-end infinite;
+}
+
+/* Ẩn cursor khi không cần */
+.cursor--hidden {
+  visibility: hidden;
+}
+
+/* ── Hero section ── */
 .hero {
   position: relative;
   z-index: 1;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: var(--space-2xl);
-  padding-bottom: var(--space-xl);
+  padding: 0 clamp(1.5rem, 8vw, 8rem);
+  padding-top: 68px; /* navbar height */
 }
 
-.hero-title {
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-lg);
-  max-width: 16ch;
+/* Eyebrow label */
+.hero-eyebrow {
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s var(--ease-vintage) both;
 }
 
-.hero-title em {
-  font-style: italic;
-  color: var(--color-accent-gold);
+/* ── Intro block — the hero of the hero ── */
+.hero-intro {
+  animation: fadeUp 0.6s var(--ease-vintage) 0.1s both;
 }
 
-.hero-sub {
-  font-size: 1.1rem;
-  max-width: 50ch;
-  margin-bottom: var(--space-lg);
+.hero-greeting {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   color: var(--color-text-secondary);
+  display: block;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
 }
 
+/* The name — most prominent element on the page */
+.hero-name {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--color-paper);
+  margin: 0;
+
+  /* Warm gradient shimmer on the name */
+  background: linear-gradient(
+    135deg,
+    var(--color-paper)       0%,
+    var(--color-accent-gold) 40%,
+    var(--color-paper)       60%,
+    var(--color-accent-amber) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* Subtle text shadow for depth (fallback) */
+  filter: drop-shadow(0 2px 24px rgba(201, 168, 76, 0.25));
+}
+
+.hero-name-dot {
+  color: var(--color-accent-orange);
+  -webkit-text-fill-color: var(--color-accent-orange);
+}
+
+/* Role badge — appears via @if after typing done */
+.hero-role-wrap {
+  margin-top: 1rem;
+  animation: fadeUp 0.5s var(--ease-vintage) both;
+}
+
+.hero-role {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  padding: 0.4rem 1.1rem;
+  border: 1px solid var(--color-border-light);
+  border-radius: 2px;
+  background: rgba(201, 168, 76, 0.06);
+  position: relative;
+}
+
+/* Corner accent marks on the role badge */
+.hero-role::before,
+.hero-role::after {
+  content: '◆';
+  font-size: 1rem;
+  color: var(--color-accent-gold);
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+}
+.hero-role::before { left:  -16px; }
+.hero-role::after  { right: -20px; }
+
+/* Tagline — appears via @if */
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-top: 2.5rem;
+  max-width: 42ch;
+  animation: fadeUp 0.5s var(--ease-vintage) both;
+}
+
+/* CTAs — appears via @if */
 .hero-actions {
   display: flex;
-  gap: var(--space-md);
+  gap: 1rem;
   flex-wrap: wrap;
+  margin-top: 2.5rem;
+  animation: fadeUp 0.5s var(--ease-vintage) 0.1s both;
 }
 
-.hero .wax-seal {
+/* Wax seal — decorative top-right */
+.hero-seal {
   position: absolute;
-  top: var(--space-xl);
-  right: var(--space-lg);
-  animation-delay: 600ms;
+  top: calc(68px + 2.5rem);
+  right: clamp(1.5rem, 6vw, 6rem);
+  animation: stampPress 0.5s var(--ease-vintage) 0.8s both;
 }
 
-/* ── Color swatches ── */
-.color-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
-  margin-bottom: var(--space-lg);
+@media (max-width: 640px) {
+  .hero-seal { display: none; }
 }
 
-.color-swatch {
-  background: var(--swatch);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
+/* Scroll hint — bottom center */
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-  color: var(--color-paper);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  min-height: 80px;
-  transition: transform var(--duration-fast) var(--ease-vintage);
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeUp 0.6s var(--ease-vintage) 1.2s both;
 }
 
-.color-swatch:hover {
-  transform: scale(1.04);
-}
-
-.color-swatch span {
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-/* ── Cards grid ── */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
-}
-
-/* ── Responsive ── */
-@media (max-width: 640px) {
-  .hero .wax-seal {
-    display: none;
-  }
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--color-border-light), transparent);
+  animation: float 2s ease-in-out infinite;
 }

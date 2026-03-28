@@ -33,11 +33,23 @@ npx ng generate service path/to/service
 
 **Routing:** Add routes to `src/app/app.routes.ts`. The root component renders `<router-outlet>`. Lazy-load feature components with `loadComponent`.
 
+**Production deployment:** GitHub Pages via `.github/workflows/deploy.yml`. Production `baseHref` is `/vobaquan/` — this affects asset paths and router links. Built output lands in `dist/vobaquan/browser/`.
+
+**Bundle budgets:** 500 KB initial warning / 1 MB error; 4 KB / 8 KB per component stylesheet. Keep lazy-loaded routes to stay within budget.
+
 **Testing:** Tests live alongside source files (`*.spec.ts`). Use `TestBed.configureTestingModule` with standalone component imports. Run a single test file with:
 ```bash
 npx vitest run src/app/app.spec.ts
 ```
 
+## Styling & Design System
+
+**Tailwind CSS 4 (CSS-first):** No `tailwind.config.js`. Theme tokens are declared inside a `@theme { }` block in `src/styles.css`, which overrides Tailwind defaults. Do not create a JS config file.
+
+**Design tokens** live in `:root` custom properties inside `src/styles.css` — a vintage autumn palette (deep espresso, warm cream, burnt orange, gold), four Google Fonts (Playfair Display, Lora, IM Fell English, Courier Prime), and a full spacing/animation library. Always use these tokens (`var(--color-*)`, `var(--font-*)`, etc.) rather than hard-coding values.
+
+**Scroll-reveal pattern:** Add `#reveal` template reference variable to any element you want to animate on scroll. The `Home` component wires an `IntersectionObserver` (threshold 0.12) via `@ViewChildren('reveal')` to add the `.revealed` class, which triggers the `fadeUp` CSS animation defined in `styles.css`.
+
 ## Code Style
 
-Prettier is configured (`.prettierrc`): 100-char print width, Angular HTML parser. Run `npx prettier --write .` to format.
+Prettier is configured (`.prettierrc`): 100-char print width, single quotes, Angular HTML parser. Run `npx prettier --write .` to format.

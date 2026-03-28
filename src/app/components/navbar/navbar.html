@@ -1,0 +1,24 @@
+<nav class="navbar">
+  <!-- Logo -->
+  <a routerLink="/" class="navbar-logo">
+    <span class="logo-monogram">VBQ</span>
+    <span class="logo-divider">|</span>
+    <span class="logo-name">Vo Ba Quan</span>
+  </a>
+
+  <!-- Nav links -->
+  <ul class="navbar-links">
+    @for (link of links; track link.path) {
+      <li>
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="nav-link"
+        >
+          {{ link.label }}
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

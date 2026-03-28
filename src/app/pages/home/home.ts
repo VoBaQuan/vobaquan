@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,23 +6,42 @@ import { Component, OnInit, ElementRef, QueryList, ViewChildren } from '@angular
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
-  @ViewChildren('reveal') revealEls!: QueryList<ElementRef>;
+  greeting = signal('');
+  name     = signal('');
+  // 'greeting' → đang gõ greeting | 'name' → đang gõ name | 'done' → xong
+  phase = signal<'greeting' | 'name' | 'done'>('greeting');
 
   ngOnInit() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    // Observe after view init
+    // Delay nhỏ trước khi bắt đầu gõ
     setTimeout(() => {
-      this.revealEls.forEach((el) => observer.observe(el.nativeElement));
-    });
+      this.type("Hi, I'm", this.greeting, 80, () => {
+        // Dừng 500ms rồi bắt đầu gõ tên
+        setTimeout(() => {
+          this.phase.set('name');
+          this.type('Vo Ba Quan.', this.name, 110, () => {
+            this.phase.set('done');
+          });
+        }, 500);
+      });
+    }, 400);
+  }
+
+  private type(
+    text: string,
+    target: WritableSignal<string>,
+    speed: number,
+    onDone?: () => void
+  ) {
+    let i = 0;
+    const tick = () => {
+      if (i < text.length) {
+        target.update((v) => v + text[i]);
+        i++;
+        setTimeout(tick, speed + Math.random() * 40); // jitter tự nhiên
+      } else {
+        onDone?.();
+      }
+    };
+    tick();
   }
 }
